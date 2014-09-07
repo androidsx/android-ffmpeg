@@ -3,24 +3,24 @@
 # set the base path to your Android NDK (or export NDK to environment)
 
 if [[ "x$NDK_BASE" == "x" ]]; then
-    NDK_BASE=/opt/android-ndk
+    NDK_BASE=/opt/android-ndk-r10
     echo "No NDK_BASE set, using $NDK_BASE"
 fi
 
 # Android now has 64-bit and 32-bit versions of the NDK for GNU/Linux.  We
 # assume that the build platform uses the appropriate version, otherwise the
 # user building this will have to manually set NDK_PROCESSOR or NDK_TOOLCHAIN.
-if [ $(uname -m) = "x86_64" ]; then
-    NDK_PROCESSOR=x86_64
-else
+#if [ $(uname -m) = "x86_64" ]; then
+#    NDK_PROCESSOR=x86_64
+#else
     NDK_PROCESSOR=x86
-fi
+#fi
 
 # Android NDK setup
-NDK_PLATFORM_LEVEL=3
+NDK_PLATFORM_LEVEL=14
 NDK_ABI=arm
 NDK_COMPILER_VERSION=4.6
-NDK_SYSROOT=$NDK_BASE/platforms/android-$NDK_PLATFORM_LEVEL/arch-$NDK_ABI
+#NDK_SYSROOT=$NDK_BASE/platforms/android-$NDK_PLATFORM_LEVEL/arch-$NDK_ABI
 NDK_UNAME=`uname -s | tr '[A-Z]' '[a-z]'`
 if [ $NDK_ABI = "x86" ]; then
     HOST=i686-linux-android
@@ -29,7 +29,16 @@ else
     HOST=$NDK_ABI-linux-androideabi
     NDK_TOOLCHAIN=$HOST-$NDK_COMPILER_VERSION
 fi
-NDK_TOOLCHAIN_BASE=$NDK_BASE/toolchains/$NDK_TOOLCHAIN/prebuilt/$NDK_UNAME-$NDK_PROCESSOR
+
+#NDK_TOOLCHAIN_BASE=$NDK_BASE/toolchains/$NDK_TOOLCHAIN/prebuilt/$NDK_UNAME-$NDK_PROCESSOR
+
+# for NDK-r10 and above, toolchain must be extracted to /tmp/
+# using make-standalone-toolchain.sh
+NDK_TOOLCHAIN_BASE=/tmp/ffmpeg-guardian
+NDK_SYSROOT=$NDK_TOOLCHAIN_BASE/sysroot/
+
+$NDK_BASE/build/tools/make-standalone-toolchain.sh --platform=android-$NDK_PLATFORM_LEVEL --install-dir=$NDK_TOOLCHAIN_BASE
+echo "NDK Toolchain: $NDK_TOOLCHAIN_BASE"
 
 CC="$NDK_TOOLCHAIN_BASE/bin/$HOST-gcc --sysroot=$NDK_SYSROOT"
 LD=$NDK_TOOLCHAIN_BASE/bin/$HOST-ld
@@ -53,5 +62,7 @@ EXTERNAL_ROOT=$PROJECT_ROOT
 DESTDIR=$EXTERNAL_ROOT
 prefix=/data/data/info.guardianproject.ffmpeg/app_opt
 LOCAL=$DESTDIR$prefix
+
+#prefix=/home/noctorus/ffmpeg_sources/ffmpeg-android-guardian/build
 
 

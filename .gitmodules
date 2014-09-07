@@ -12,3 +12,11 @@
 	path = sox
 	url = git://git.code.sf.net/p/sox/code
 	branch = master
+[submodule "yasm"]
+	path = yasm
+	url = https://github.com/yasm/yasm.git
+	branch = 1.1.0
+[submodule "lame"]
+	path = lame
+	url = https://github.com/rbrito/lame.git
+	branch = lame3_99
