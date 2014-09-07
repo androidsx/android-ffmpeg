@@ -1,13 +1,31 @@
 
+This project is branched from guardianproject:
+link: https://github.com/guardianproject/android-ffmpeg
+
+
+note by guardianproject
+-----------------------
 This is a new android-ffmpeg project since it seems there were so many
 different ways of doing it, it was confusing.  So here is my clean, easily
 changeable, static ffmpeg creator for Android.  The result is a single
 'ffmpeg' that is statically linked, so its the only file you need.
 
+
+note by morph85
+---------------
+This branched out project is to fix a few issues listed below:
+- lack of lame mp3 support
+- compilation issue using NDK r10 (toolchain issue)
+- compilation issue for various libraries (yasm, freetype, lame)
+- currently using static library for lame
+
+
 setup
 -----
 
- 1. Install the Android NDK r8 or newer
+ 1. Install the Android NDK r10
+    (use the following link:
+    http://tutorialforlinux.com/2013/11/24/how-to-install-android-ndk-on-linux-ubuntu-13-10-saucy-easy-guide/)
  2. On Debian/Ubuntu, run: apt-get install yasm bash patch make gawk
     (If you are on older releases of Debian/Ubuntu/Mint, like Debian/squeeze,
     then you will need to get newer versions of the packages automake,
