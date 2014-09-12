@@ -30,11 +30,11 @@ else
     NDK_TOOLCHAIN=$HOST-$NDK_COMPILER_VERSION
 fi
 
-#NDK_TOOLCHAIN_BASE=$NDK_BASE/toolchains/$NDK_TOOLCHAIN/prebuilt/$NDK_UNAME-$NDK_PROCESSOR
+NDK_TOOLCHAIN_BASE=$NDK_BASE/toolchains/$NDK_TOOLCHAIN/prebuilt/$NDK_UNAME-$NDK_PROCESSOR
 
-# for NDK-r10 and above, toolchain must be extracted to /tmp/
-# using make-standalone-toolchain.sh
-NDK_TOOLCHAIN_BASE=/tmp/ffmpeg-guardian
+# for NDK-r10 and above, toolchain must be extracted to /tmp/ using make-standalone-toolchain.sh
+#NDK_TOOLCHAIN_BASE=/tmp/ffmpeg-guardian
+
 NDK_SYSROOT=$NDK_TOOLCHAIN_BASE/sysroot/
 
 $NDK_BASE/build/tools/make-standalone-toolchain.sh --platform=android-$NDK_PLATFORM_LEVEL --install-dir=$NDK_TOOLCHAIN_BASE
@@ -60,9 +60,5 @@ EXTERNAL_ROOT=$PROJECT_ROOT
 
 # install root for built files
 DESTDIR=$EXTERNAL_ROOT
-prefix=/data/data/info.guardianproject.ffmpeg/app_opt
+prefix=/out
 LOCAL=$DESTDIR$prefix
-
-#prefix=/home/noctorus/ffmpeg_sources/ffmpeg-android-guardian/build
-
-

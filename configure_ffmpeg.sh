@@ -34,8 +34,8 @@ $DEBUG_FLAG \
 --enable-static \
 --cross-prefix=$NDK_TOOLCHAIN_BASE/bin/$NDK_ABI-linux-androideabi- \
 --sysroot="$NDK_SYSROOT" \
---extra-cflags="-I../x264 -I../libmp3lame/include -I../yasm -mfloat-abi=softfp -mfpu=neon" \
---extra-ldflags="-L../x264 -L../libmp3lame/lib -L../yasm" \
+--extra-cflags="-I../x264 -I../yasm -mfloat-abi=softfp -mfpu=neon" \
+--extra-ldflags="-L../x264 -L../yasm" \
 \
 --enable-version3 \
 --enable-gpl \
@@ -48,14 +48,12 @@ $DEBUG_FLAG \
 --enable-muxers \
 --enable-demuxers \
 --enable-parsers \
---enable-protocols \
---enable-filters \
---enable-avresample \
+--disable-protocols \
+--disable-filters \
+--disable-avresample \
 --disable-libfreetype \
---enable-libmp3lame \
 \
 --disable-indevs \
---enable-indev=lavfi \
 --disable-outdevs \
 \
 --enable-hwaccels \
@@ -71,5 +69,4 @@ $DEBUG_FLAG \
 --enable-muxer=md5
 
 popd; popd
-
 
