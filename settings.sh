@@ -3,7 +3,7 @@
 # set the base path to your Android NDK (or export NDK to environment)
 
 if [[ "x$NDK_BASE" == "x" ]]; then
-    NDK_BASE=/opt/android-ndk-r10
+    NDK_BASE=~/android-ndk-r10
     echo "No NDK_BASE set, using $NDK_BASE"
 fi
 
