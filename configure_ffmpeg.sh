@@ -2,11 +2,6 @@
 pushd `dirname $0`
 . settings.sh
 
-if [[ $DEBUG == 1 ]]; then
-  echo "DEBUG = 1"
-  DEBUG_FLAG="--disable-stripping"
-fi
-
 # I haven't found a reliable way to install/uninstall a patch from a Makefile,
 # so just always try to apply it, and ignore it if it fails. Works fine unless
 # the files being patched have changed, in which cause a partial application
@@ -23,7 +18,7 @@ fi
 pushd ffmpeg
 
 ./configure \
-$DEBUG_FLAG \
+--disable-stripping \
 --arch=arm \
 --cpu=cortex-a8 \
 --target-os=linux \
