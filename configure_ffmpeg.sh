@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Helium version: 2.6 (added two additional filters)
+# Helium version: 2.6 for Android-5 (added two additional filters)
 
 pushd `dirname $0`
 . settings.sh
@@ -32,8 +32,12 @@ pushd ffmpeg
 --enable-static \
 --cross-prefix=$NDK_TOOLCHAIN_BASE/bin/$NDK_ABI-linux-androideabi- \
 --sysroot="$NDK_SYSROOT" \
---extra-cflags="-I../x264 -I../yasm -mfloat-abi=softfp -mfpu=neon" \
---extra-ldflags="-L../x264 -L../yasm" \
+\ # For Android 4.x
+\ #--extra-cflags="-I../x264 -I../yasm -mfloat-abi=softfp -mfpu=neon" \
+\ #--extra-ldflags="-L../x264 -L../yasm" \
+\ # For Android 5.x
+--extra-cflags="-I../x264 -I../yasm -mfloat-abi=softfp -mfpu=neon -fPIE" \
+--extra-ldflags="-L../x264 -L../yasm -fPIE -pie" \
 \
 --enable-version3 \
 --enable-gpl \
