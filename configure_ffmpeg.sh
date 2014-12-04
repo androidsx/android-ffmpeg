@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Helium version: 2.5 (well, we're not 100% sure, the MD5 is not the same. ffmpeg-2.5 is the one that went live)
+# Helium version: 2.6 (added two additional filters)
 
 pushd `dirname $0`
 . settings.sh
@@ -49,6 +49,8 @@ pushd ffmpeg
 --disable-protocols \
 --enable-protocol=file \
 --disable-filters \
+--enable-filter=amerge \
+--enable-filter=amix \
 --enable-filter=aresample \
 --disable-avresample \
 --disable-libfreetype \
