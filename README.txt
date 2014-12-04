@@ -19,6 +19,13 @@ This branched out project is to fix a few issues listed below:
 - compilation issue for various libraries (yasm, freetype, lame)
 - currently using static library for lame
 
+note by androidsx
+-----------------
+Typical compilation line, after which you can find the binary at `ffmpeg/ffmpeg`:
+
+    NDK_BASE=~/android-ndks/android-ndk-r10c/ ./configure_make_everything.sh
+
+Find the binaries that we've been using in the `ffmpeg-compiled` folder. Look at the Git history of the `configure_ffmpeg.sh` file if you want to go back to a previous version.
 
 setup
 -----
