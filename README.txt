@@ -27,6 +27,8 @@ Typical compilation line, after which you can find the binary at `ffmpeg/ffmpeg`
 
 Find the binaries that we've been using in the `ffmpeg-compiled` folder. Look at the Git history of the `configure_ffmpeg.sh` file if you want to go back to a previous version.
 
+For Android 5, we need a Position Independent Executable (PIE) binary. You can check the binary with `hardening-check ffmpeg/ffmpeg`
+
 setup
 -----
 
