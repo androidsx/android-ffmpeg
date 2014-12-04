@@ -1,4 +1,7 @@
 #!/bin/bash
+
+# Helium version: 2.5 (well, we're not 100% sure, the MD5 is not the same. ffmpeg-2.5 is the one that went live)
+
 pushd `dirname $0`
 . settings.sh
 
