@@ -18,7 +18,7 @@ pushd `dirname $0`
 pushd ffmpeg
 
 ./configure \
---disable-stripping \
+--enable-stripping \
 --arch=arm \
 --cpu=cortex-a8 \
 --target-os=linux \
@@ -44,7 +44,9 @@ pushd ffmpeg
 --enable-demuxers \
 --enable-parsers \
 --disable-protocols \
+--enable-protocol=file \
 --disable-filters \
+--enable-filter=aresample \
 --disable-avresample \
 --disable-libfreetype \
 \
@@ -59,9 +61,9 @@ pushd ffmpeg
 --disable-ffserver \
 --disable-network \
 \
---enable-libx264 \
---enable-zlib \
---enable-muxer=md5
+#--enableffmpeg-libx264 \
+--disable-zlib \
+--disable-muxer=md5
 
 popd; popd
 
