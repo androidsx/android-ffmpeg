@@ -5,6 +5,8 @@
 if [[ "x$NDK_BASE" == "x" ]]; then
     echo "No NDK_BASE set, exiting"
     exit 1
+else
+	echo "NDK_BASE is $NDK_BASE"
 fi
 
 # Android now has 64-bit and 32-bit versions of the NDK for GNU/Linux.  We

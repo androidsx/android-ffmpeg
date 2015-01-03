@@ -25,6 +25,8 @@ Typical compilation line, after which you can find the binary at `ffmpeg/ffmpeg`
 
     NDK_BASE=~/android-ndks/android-ndk-r10c/ ./configure_make_everything.sh
 
+Before this, you probably did `git clone https://github.com/androidsx/android-ffmpeg.git`, `cd android-ffmpeg`, git co compiled-for-helium`, `git submodule init` and `git submodule update`.
+
 Find the binaries that we've been using in the `ffmpeg-compiled` folder. Look at the Git history of the `configure_ffmpeg.sh` file if you want to go back to a previous version.
 
 For Android 5, we need a Position Independent Executable (PIE) binary. You can check the binary with `hardening-check ffmpeg/ffmpeg`
