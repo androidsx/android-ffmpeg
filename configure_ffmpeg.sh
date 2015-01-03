@@ -56,6 +56,8 @@ pushd ffmpeg
 --enable-filter=amerge \
 --enable-filter=amix \
 --enable-filter=aresample \
+--enable-libfreetype \
+--enable-libfontconfig \
 --disable-avresample \
 --disable-libfreetype \
 \
