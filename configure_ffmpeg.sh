@@ -18,6 +18,15 @@ pushd `dirname $0`
 #patch -d ffmpeg -N -p1 --reject-file=- < \
 #    enable-fake-pkg-config.patch
 
+# In the line EXTRA_FLAGS, use one of these:
+# For Android 4.x
+#--extra-cflags="-I../x264 -I../yasm -mfloat-abi=softfp -mfpu=neon" \
+#--extra-ldflags="-L../x264 -L../yasm" \
+# For Android 5.x
+#--extra-cflags="-I../x264 -I../yasm -mfloat-abi=softfp -mfpu=neon -fPIE" \
+#--extra-ldflags="-L../x264 -L../yasm -fPIE -pie" \
+
+
 pushd ffmpeg
 
 ./configure \
@@ -32,10 +41,6 @@ pushd ffmpeg
 --enable-static \
 --cross-prefix=$NDK_TOOLCHAIN_BASE/bin/$NDK_ABI-linux-androideabi- \
 --sysroot="$NDK_SYSROOT" \
-\ # For Android 4.x
-\ #--extra-cflags="-I../x264 -I../yasm -mfloat-abi=softfp -mfpu=neon" \
-\ #--extra-ldflags="-L../x264 -L../yasm" \
-\ # For Android 5.x
 --extra-cflags="-I../x264 -I../yasm -mfloat-abi=softfp -mfpu=neon -fPIE" \
 --extra-ldflags="-L../x264 -L../yasm -fPIE -pie" \
 \
@@ -56,8 +61,11 @@ pushd ffmpeg
 --enable-filter=amerge \
 --enable-filter=amix \
 --enable-filter=aresample \
+--enable-filter=drawtext \
 --enable-libfreetype \
 --enable-libfontconfig \
+--enable-libfribidi \
+--enable-filter=overlay \
 --disable-avresample \
 --disable-libfreetype \
 \
@@ -73,8 +81,8 @@ pushd ffmpeg
 --disable-network \
 \
 #--enableffmpeg-libx264 \
---disable-zlib \
---disable-muxer=md5
+#--disable-zlib \
+#--disable-muxer=md5
 
 popd; popd
 
