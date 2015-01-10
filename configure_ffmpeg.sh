@@ -50,27 +50,54 @@ pushd ffmpeg
 --disable-doc \
 --enable-yasm \
 \
---enable-decoders \
---enable-encoders \
---enable-muxers \
---enable-demuxers \
---enable-parsers \
+--disable-decoders \
+--enable-decoder=mpeg4 \
+--enable-decoder=wavpack \
+--enable-decoder=pcm_s16le \
+--enable-decoder=h264 \
+--enable-decoder=aac \
+--enable-decoder=png \
+\
+--disable-encoders \
+--enable-encoder=pcm_s16le \
+--enable-encoder=aac \
+--enable-encoder=png \
+--enable-encoder=mpeg4 \
+\
+--disable-parsers \
+--enable-parser=aac \
+--enable-parser=h264 \
+--enable-parser=png \
+--enable-parser=mpeg4video \
+\
+--disable-demuxers \
+--enable-demuxer=pcm_s16le \
+--enable-demuxer=h264 \
+--enable-demuxer=wav \
+--enable-demuxer=image2 \
+--enable-demuxer=mov \
+\
+--disable-muxers \
+--enable-muxer=pcm_s16le \
+--enable-demuxer=h264 \
+--enable-muxer=image2 \
+--enable-muxer=wav \
+--enable-muxer=mp4 \
+\
 --disable-protocols \
 --enable-protocol=file \
+\
 --disable-filters \
 --enable-filter=amerge \
 --enable-filter=amix \
 --enable-filter=aresample \
---enable-filter=drawtext \
---enable-libfreetype \
---enable-libfontconfig \
---enable-libfribidi \
 --enable-filter=overlay \
---disable-avresample \
---disable-libfreetype \
+--enable-filter=scale \
 \
+--disable-avresample \
 --disable-indevs \
 --disable-outdevs \
+--disable-bsfs \
 \
 --enable-hwaccels \
 \
@@ -80,9 +107,6 @@ pushd ffmpeg
 --disable-ffserver \
 --disable-network \
 \
-#--enableffmpeg-libx264 \
-#--disable-zlib \
-#--disable-muxer=md5
 
 popd; popd
 
