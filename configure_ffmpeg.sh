@@ -79,7 +79,7 @@ pushd ffmpeg
 \
 --disable-muxers \
 --enable-muxer=pcm_s16le \
---enable-demuxer=h264 \
+--enable-muxer=h264 \
 --enable-muxer=image2 \
 --enable-muxer=wav \
 --enable-muxer=mp4 \
